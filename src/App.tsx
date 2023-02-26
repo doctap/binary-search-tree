@@ -1,29 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './App.module.scss';
-import { useAppDispatch, useAppSelector } from './redux/hooks/redux';
-import { showSlice } from './redux/reducers/ExampleSlice';
-import logo from './logo.svg';
+import BinarySearchTreeComponent from './components/BinarySearchTreeComponent';
+import { separateTreeByLevel } from './common/separateTreeByLevel';
+const CreateTree = require('functional-red-black-tree');
 
 function App () {
-  const { plusOne, showHideWindow } = showSlice.actions;
-  const { counter, isShow } = useAppSelector(st => st.showSlice);
-  const dispatch = useAppDispatch();
+  const [tree, setTree] = useState(new CreateTree());
 
-  const showReact = () => { dispatch(showHideWindow(!isShow)); };
-  const setCount = () => { dispatch(plusOne(counter + 1)); };
+  function handleKeyDown () {
+    // if (event.code === "Space") {
+    const randomKey = Math.floor(Math.random() * 201) - 100; // [-100, 100]
+    setTree((tree) => tree.insert(randomKey));
+    // }
+  }
 
   return (
     <div className={styles.App}>
-
-      <button onClick={showReact} className={styles.Click}>star</button>
-      <img src={logo} className={styles.AppLogo} alt="logo" />
-
-      {
-        isShow
-          ? <><h1>Happy hacking!{counter}</h1> <button onClick={setCount}>count</button></>
-          : null
-      }
-
+      <BinarySearchTreeComponent handleKeyDown={handleKeyDown} tree={tree.root === null ? [] : separateTreeByLevel(tree.root)} />
     </div>
   );
 }

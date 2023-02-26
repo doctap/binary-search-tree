@@ -1,0 +1,52 @@
+.tree {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  width: 100%;
+}
+
+.node {
+  height: fit-content;
+  width: fit-content;
+  position: relative;
+}
+
+.leftColor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  height: 2em;
+  width: 2em;
+  background: rgba(255, 0, 0, 0.444);
+}
+
+.rightColor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2em;
+  width: 2em;
+  border-radius: 50%;
+  background: rgba(0, 0, 255, 0.475);
+  
+}
+
+.right {
+  height: 2em;
+  width: 2em;
+  position: absolute;
+  bottom: -50px;
+  left: 50px;
+  margin: 5px;
+}
+
+.left {
+  height: 2em;
+  width: 2em;
+  position: absolute;
+  bottom: -50px;
+  right: 50px;
+  margin: 5px;
+}
