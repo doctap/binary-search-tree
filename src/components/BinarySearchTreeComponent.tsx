@@ -20,12 +20,16 @@ function BinarySearchTreeComponent (prop: IBinarySearchTreeComponent) {
         >
           {
             level.map((node, indexColumn) => (
-              <div
-                className='node'
-                key={node}
-              >
-                {node}
-              </div>
+              Number.isNaN(node)
+                ? <div
+                  className='empty_node'
+                  key={indexColumn}>
+                </div>
+                : <div
+                  className='node'
+                  key={indexColumn}>
+                  {node}
+                </div>
             ))
           }
         </div>

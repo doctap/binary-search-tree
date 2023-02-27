@@ -2,27 +2,37 @@ import { type Node, separateTreeByLevel } from './separateTreeByLevel';
 
 const getTree = (): Node => ({
   key: 0,
+  
   left: {
     key: 1,
     _color: 1,
+
     left: {
-      key: 1,
+      key: 3,
       _color: 1,
-      left: null,
+      left: {
+        key: 7,
+        _color: 1,
+        left: null,
+        right: null
+      },
       right: null
     },
+
     right: {
-      key: 2,
+      key: 4,
       _color: 0,
       left: null,
       right: null
     }
   },
+
   right: {
     key: 2,
     _color: 0,
+
     left: {
-      key: 1,
+      key: 5,
       _color: 1,
       left: null,
       right: null
@@ -38,6 +48,7 @@ test('separateTreeByLevel', () => {
   expect(treeByLevels).toEqual([
     [0],
     [1, 2],
-    [1, 2, 1]
+    [3, 4, 5, NaN],
+    [7, NaN, NaN, NaN, NaN, NaN, NaN, NaN]
   ]);
 });
