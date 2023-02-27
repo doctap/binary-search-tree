@@ -17,16 +17,9 @@
 
 .node {
   border-radius: 50%;
-  height: 50px;
-  width: 50px;
   background: #7c3aa2;
   color: yellow;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.empty_node {
-  height: 50px;
-  width: 50px;
 }

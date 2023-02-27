@@ -9,6 +9,10 @@ interface IBinarySearchTreeComponent {
 }
 
 function BinarySearchTreeComponent (prop: IBinarySearchTreeComponent) {
+  const getFontSize = (sizeIndex: number) => {
+    return sizeIndex < 7 ? `0.${99 - 2 ** sizeIndex}rem` : '0.35rem';
+  };
+  
   return (
     <div
       className="column"
@@ -22,11 +26,21 @@ function BinarySearchTreeComponent (prop: IBinarySearchTreeComponent) {
             level.map((node, indexColumn) => (
               Number.isNaN(node)
                 ? <div
+                  style={{
+                    height: '3em',
+                    width: '3em',
+                    fontSize: getFontSize(indexRow)
+                  }}
                   className='empty_node'
                   key={indexColumn}>
                 </div>
                 : <div
                   className='node'
+                  style={{
+                    height: '3em',
+                    width: '3em',
+                    fontSize: getFontSize(indexRow)
+                  }}
                   key={indexColumn}>
                   {node}
                 </div>
